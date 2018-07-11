@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const team = require('./team')
 
 
-app.use('/team', assignments)
+app.use('/team', team)
 
 app.set('port', (process.env.PORT || 5000));
 
