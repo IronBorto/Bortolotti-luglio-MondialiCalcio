@@ -1,80 +1,64 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://bortolotti-luglio-calcio.herokuapp.com/
 
 # Mondiali calcio
 
 é una semplice api che permette di avere informazioni sulle squadre di calcio presenti al mondiale 2018
 
-## Questions Collection [/teams]
+## Questions Collection [/team?name=]
 
 ### List All Questions [GET]
 
-+ Response 200 (application/json)
+restituisce le info su una squadra
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
++ Response 200 (application/json)
+       
+        {
+            "name": "Croazia",
+            "is_still_in": "true"
+            "matches": [
+                "belgio, w",
+                "islanda, d",
+                "argentina, l"
                 ]
-            }
-        ]
+            
+        }
+        
+
 
 ### Create a New Question [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+Puoi inserire o modificare le informazioni su una squadra
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
+            "name": "Croazia",
+            "matches": [
+                "belgio, w",
+                "islanda, d",
+                "argentina, l"
+                
             ]
+            
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /team?name=Croazia
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+            "name": "Croazia",
+            "matches": [
+                "belgio, w",
+                "islanda, d",
+                "argentina, l"
+                
+            ]
+        
+        
             }
